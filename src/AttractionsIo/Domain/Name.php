@@ -2,7 +2,7 @@
 
 namespace AttractionsIo\Domain;
 
-use InvalidArgumentException;
+use LengthException;
 
 class Name {
     private $name;
@@ -10,7 +10,7 @@ class Name {
     public function __construct(string $name)
     {
         if(strlen($name) > 32) {
-            throw new InvalidArgumentException(sprintf('%s exceeds 32 characters', $name));
+            throw new LengthException(sprintf('%s exceeds 32 characters', $name));
         }    
         
         $this->name = $name;

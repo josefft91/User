@@ -7,6 +7,7 @@ use AttractionsIo\Domain\Email;
 use AttractionsIo\Domain\DateOfBirth;
 use AttractionsIo\Domain\Name;
 use InvalidArgumentException;
+use LengthException;
 
 class UserTest extends TestCase
 {
@@ -19,19 +20,19 @@ class UserTest extends TestCase
 
     public function testFirstNameMaxChars() : void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(LengthException::class);
         new User(13, new Name('Yqoe7rdhnaZBfH2kKRcPgsJi5QHxCTSFC'), new Name('Thomas'), new DateOfBirth(11, 07, 1991), new Email('user@example.com'), 'test123');
     }
 
     public function testLastNameMaxChars() : void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(LengthException::class);
         new User(13, new Name('Jo'), new Name('Yqoe7rdhnaZBfH2kKRcPgsJi5QHxCTSFC'), new DateOfBirth(11, 07, 1991), new Email('user@example.com'), 'test123');
     }
 
     public function testPasswordMaxChars() : void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(LengthException::class);
         $user = new User(13, new Name('Jo'), new Name('Thomas'), new DateOfBirth(11, 07, 1991), new Email('user@example.com'), 'Yqoe7rdhnaZBfH2kKRcPgsJi5QHxCTSFC');
         $this->assertInstanceOf(User::class, $user);
     }

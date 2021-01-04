@@ -5,6 +5,7 @@ use \AttractionsIo\Domain\DateOfBirth;
 use \AttractionsIo\Domain\Email;
 use \AttractionsIo\Domain\Name;
 use InvalidArgumentException;
+use LengthException;
 
 class User {
 
@@ -29,7 +30,7 @@ class User {
         }
 
         if(strlen($password) > 32) {
-            throw new InvalidArgumentException(sprintf('%s exceeds 32 characters', $password));
+            throw new LengthException(sprintf('%s exceeds 32 characters', $password));
         }
 
         $this->id = $id;
